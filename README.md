@@ -165,4 +165,5 @@ For questions about widget development or sandbox usage:
 
 ## License
 
-This project is intended for alfred_ widget development. Please respect the platform's guidelines and terms of service when developing widgets.
+This project is licensed under the MIT License - see the LICENSE file for details.
+The sandbox itself is open source, but widgets developed for alfred_ must comply with the alfred_ platform's terms of service and guidelines.
