@@ -32,11 +32,13 @@ interface WidgetInstance {
   config: Record<string, unknown>;
 }
 
+
 export default function WidgetSandbox() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   
-  // Create a diverse set of sample widgets to showcase the ecosystem
-  const [widgets, setWidgets] = useState<WidgetInstance[]>([
+
+  
+const [widgets, setWidgets] = useState<WidgetInstance[]>([
     {
       id: 'notes-demo',
       type: 'sample-widget',
@@ -85,15 +87,30 @@ export default function WidgetSandbox() {
           { id: '3', title: 'Adjust maximum items', completed: false }
         ]
       }
-    }
+    },
+    // ADD QUICKLINKS AS A SEPARATE WIDGET HERE:
+    {
+  id: 'proflow-demo',  // Changed from 'quicklinks-demo'
+  type: 'proflow',     // Changed from 'quicklinks'
+  config: {
+    title: 'ProFlow Sessions',  // Changed from 'Student Quick Links'
+    links: [],
+    maxLinks: 12,
+    openInNewTab: true,
+    showCategories: true
+  }
+}
   ]);
+ 
 
   const [layouts, setLayouts] = useState<{ [key: string]: LayoutItem[] }>({
     lg: [
       { i: 'notes-demo', x: 0, y: 0, w: 3, h: 4, minW: 2, minH: 2 },
       { i: 'todo-demo', x: 3, y: 0, w: 3, h: 4, minW: 2, minH: 2 },
       { i: 'progress-demo', x: 6, y: 0, w: 3, h: 4, minW: 2, minH: 2 },
-      { i: 'settings-demo', x: 9, y: 0, w: 3, h: 4, minW: 2, minH: 2 }
+      { i: 'settings-demo', x: 9, y: 0, w: 3, h: 4, minW: 2, minH: 2 },
+      // ADD THIS QUICKLINKS LAYOUT:
+      { i: 'proflow-demo', x: 0, y: 4, w: 4, h: 3, minW: 2, minH: 2 }  // Changed from 'quicklinks-demo'
     ]
   });
 

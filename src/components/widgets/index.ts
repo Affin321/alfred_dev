@@ -5,28 +5,24 @@ import { WidgetConfig, WidgetProps } from "../../types";
 
 // Widget Components
 import SampleWidget from "./SampleWidget"
-//import WordleWidget from "./WordleWidget";
-// Import TemplateWidget (commented as it's not for production use)
-// import TemplateWidget from './TemplateWidget/index';
+import ProFlowWidget from "./ProFlow"  // Changed from QuickLinks
 
 // Export widget types
 export * from "./SampleWidget/types";
-//export * from "./WordleWidget/types";
-
-// Export TemplateWidget types (commented as it's not for production use)
-// export * from './TemplateWidget/types';
+//export * from "./ProFlow/types";  // Changed from QuickLinks
 
 // Enhanced Widget Config
 export interface EnhancedWidgetConfig extends WidgetConfig {
   category: string;
   description: string;
   supportsMultipleInstances?: boolean;
-  [key: string]: unknown; // Add index signature to make it compatible with Record<string, unknown>
+  [key: string]: unknown;
 }
 
-// Widget favicon mapping - maps widget type to favicon filename
+// Widget favicon mapping
 const WIDGET_FAVICON_MAP: Record<string, string> = {
   'sample-widget': 'SampleWidgetFavicon.png',
+  'proflow': 'ProFlowFavicon.png',  // Changed from 'quicklinks'
 };
 
 // Function to get widget favicon
@@ -35,28 +31,38 @@ export const getWidgetFavicon = (widgetType: string): string => {
   if (faviconFilename) {
     return `/widgetFavicons/${faviconFilename}`;
   }
-  // Fallback to empty string if no favicon found
   return '';
 };
 
-// Widget registry with enhanced metadata - Keep icon property but use favicons in UI
+// Widget registry with enhanced metadata
 export const WIDGET_REGISTRY: EnhancedWidgetConfig[] = [
   {
     type: "sample-widget",
     name: "Sample Widget",
-    icon: "CheckSquare", // Keep for compatibility, but use favicon in UI
+    icon: "CheckSquare",
     minWidth: 2,
     minHeight: 2,
     defaultWidth: 2,
     defaultHeight: 2,
     category: "Productivity",
     supportsMultipleInstances: true,
-    description:
-      "This is a sample widget. Move it, drag it, expand it.",
-  }
+    description: "This is a sample widget. Move it, drag it, expand it.",
+  },
+  {
+  type: "proflow",  // Changed from "quicklinks"
+  name: "ProFlow",  // Changed from "Quick Links"
+  icon: "Link", // Better icon
+  minWidth: 2,
+  minHeight: 2,
+  defaultWidth: 3,
+  defaultHeight: 3,
+  category: "Productivity",
+  supportsMultipleInstances: true,
+  description: "Smart session-based productivity flow management for students and professionals",
+}
 ];
 
-// Updated widget categories to match new structure
+// Widget categories
 export const WIDGET_CATEGORIES = [
   { id: "news", name: "News" },
   { id: "productivity", name: "Productivity" },
@@ -78,17 +84,12 @@ export const getWidgetComponent = (
       return SampleWidget as unknown as React.ComponentType<
         WidgetProps<Record<string, unknown>>
       >;
-    // case "wordle":
-    //   return WordleWidget as unknown as React.ComponentType<
-    //     WidgetProps<Record<string, unknown>>
-    //   >;
-
-    // Template widget registration (commented as it's not for production use)
-    // case 'template':
-    //   return TemplateWidget;
+    case "proflow":
+      return ProFlowWidget as unknown as React.ComponentType<
+        WidgetProps<Record<string, unknown>>
+      >;
     default:
       return null;
-      
   }
 };
 
