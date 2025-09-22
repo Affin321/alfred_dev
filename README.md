@@ -1,3 +1,28 @@
+# ProFlow (Work in Progress)
+
+This fork of [alfred_dev](https://github.com/connorfata/alfred_dev) includes my experimental **ProFlow widget**.
+
+ProFlow is a productivity widget that lets users create and manage work sessions inside the Alfred dashboard sandbox.
+
+---
+
+## Current Progress 🚀
+- ✅ Created `ProFlow` widget folder with `index.tsx`, `types.ts`, and docs
+- ✅ Integrated into widget registry (`src/components/widgets/index.ts`)
+- ✅ Wired into `App.tsx` so it shows up in the sandbox
+- ⚠️ Still in development — core features are incomplete
+
+---
+
+## Roadmap / TODO 📝
+- [ ] Add session persistence (localStorage)
+- [ ] Validate session names (unique, length)
+- [ ] Add settings toggles (open in new tab, show categories)
+- [ ] Polish UI/UX with Tailwind
+- [ ] Add screenshots / demo GIF
+- [ ] Write tests for session logic
+
+
 # alfred_ Widget Sandbox
 
 A comprehensive development environment for building and testing widgets for the alfred_ dashboard platform.
